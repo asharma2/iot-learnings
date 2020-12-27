@@ -1,0 +1,9 @@
+server:
+   port: 8902
+spring:
+   kafka:
+      bootstrap-servers: localhost:9200,localhost:9201,localhost:9203
+   zipkin:
+      enabled: false
+   sleuth:
+      enabled: true

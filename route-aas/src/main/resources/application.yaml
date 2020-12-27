@@ -1,0 +1,20 @@
+server:
+   port: 8905
+spring:
+   http:
+      log-request-details: true
+   kafka:
+      consumer:
+         bootstrap-servers: localhost:9200,localhost:9201,localhost:9203
+      producer:
+         bootstrap-servers: localhost:9200,localhost:9201,localhost:9203
+   zipkin:
+      enabled: false
+   sleuth:
+      enabled: true
+reverse:
+   geo:
+      base-url: http://localhost:8900
+logging:
+   level:
+      org.springframework.web.reactive.function.client.ExchangeFunctions: TRACE

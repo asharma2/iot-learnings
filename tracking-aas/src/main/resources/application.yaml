@@ -1,0 +1,13 @@
+server:
+   port: 8901
+spring:
+   kafka:
+      producer:
+         bootstrap-servers: localhost:9200,localhost:9201,localhost:9203
+   zipkin:
+      enabled: false
+   sleuth:
+      enabled: true
+   batch:
+      job:
+         enabled: false

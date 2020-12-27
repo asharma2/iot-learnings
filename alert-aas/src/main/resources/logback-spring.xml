@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="5 seconds">
+    <include
+        resource="org/springframework/boot/logging/logback/defaults.xml" />
+    ​
+    <springProperty scope="context" name="appName"  source="spring.application.name" />
+    <springProperty scope="context" name="profile" source="spring.profiles.active" />
+    <springProperty scope="context" name="port" source="server.port" />
+    <property name="LOG_FILE" value="/apps/logs/${hostName}/iot-learnings/${appName}" />
+    
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_FILE}.log</file>
+        <rollingPolicy
+            class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_FILE}.log.%d{yyyy-MM-dd}.%i.gz
+            </fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>500MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>15</maxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+                <Pattern>
+                   %d{ISO8601} %-4relative [%thread] %-5level %class{36}.%M %L - %msg %n
+                </Pattern>
+        </layout>
+    </appender>
+    
+       <appender name="LOGSTASH" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_FILE}.json</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_FILE}.json.%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <timestamp>
+                    <timeZone>UTC</timeZone>
+                </timestamp>
+                <pattern>
+                    <pattern>
+                        {
+                        "severity": "%level",
+                        "service": "${appName:-}",
+                        "port": "${port:-}",
+                        "profile": "${profile:-}",
+                        "hostname": "${HOSTNAME:-}",
+                        "trace": "%X{X-B3-TraceId:-}",
+                        "span": "%X{X-B3-SpanId:-}",
+                        "parent": "%X{X-B3-ParentSpanId:-}",
+                        "correlationId": "%X{correlationId:-}",
+                        "exportable": "%X{X-Span-Export:-}",
+                        "pid": "${PID:-}",
+                        "thread": "%thread",
+                        "class": "%logger{20}",
+                        "line": "%line",
+                        "rest": "%message"
+                        }
+                    </pattern>
+                </pattern>
+            </providers>
+        </encoder>
+    </appender>
+
+    <appender name="CONSOLE" class="ch.qos.logback.classic.AsyncAppender">
+        <discardingThreshold>0</discardingThreshold>
+        <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+            <layout class="ch.qos.logback.classic.PatternLayout">
+                <Pattern>
+                    %d{ISO8601} %5p [${appName},%X{traceId:-},%X{spanId:-},%X{correlationId:-},%X{exportable:-}]  ${PID:- } --- %logger{20}:%line : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}
+                </Pattern>
+            </layout>
+        </appender>
+        <queueSize>500</queueSize>
+        <neverBlock>false</neverBlock>
+    </appender>
+    
+
+    <root level="INFO">
+        <appender-ref ref="FILE" />
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="LOGSTASH" />
+    </root>
+</configuration>

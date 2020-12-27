@@ -1,0 +1,10 @@
+server:
+   port: 8900
+spring:
+   zipkin:
+      enabled: false
+   sleuth:
+      enabled: true
+   batch:
+      job:
+         enabled: false
