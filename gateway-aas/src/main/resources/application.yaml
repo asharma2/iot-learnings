@@ -1,0 +1,14 @@
+server:
+   port: 9092
+spring:
+   zipkin:
+      enabled: false
+   sleuth:
+      enabled: true
+   batch:
+      job:
+         enabled: false
+eureka:
+   client:
+      service-url:
+         default-zone: http://localhost:9092/eureka

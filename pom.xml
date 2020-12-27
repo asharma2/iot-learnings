@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.iot.learnings</groupId>
 	<artifactId>iot-learnings</artifactId>
@@ -12,7 +14,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.3.4.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -99,13 +101,13 @@
 		<module>reverse-geo-aas</module>
 		<module>geo-fencing-aas</module>
 		<module>alert-aas</module>
-	  <module>notification-aas</module>
-    <module>timeline-aas</module>
-    <module>search-aas</module>
-    <module>network-aas</module>
-    <module>configuration-aas</module>
-    <module>gateway-aas</module>
-    <module>socket-aas</module>
-    <module>authentication-aas</module>
-  </modules>
+		<module>notification-aas</module>
+		<module>timeline-aas</module>
+		<module>search-aas</module>
+		<module>network-aas</module>
+		<module>configuration-aas</module>
+		<module>gateway-aas</module>
+		<module>socket-aas</module>
+		<module>authentication-aas</module>
+	</modules>
 </project>
