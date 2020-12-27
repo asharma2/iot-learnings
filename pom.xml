@@ -100,5 +100,12 @@
 		<module>geo-fencing-aas</module>
 		<module>alert-aas</module>
 	  <module>notification-aas</module>
+    <module>timeline-aas</module>
+    <module>search-aas</module>
+    <module>network-aas</module>
+    <module>configuration-aas</module>
+    <module>gateway-aas</module>
+    <module>socket-aas</module>
+    <module>authentication-aas</module>
   </modules>
 </project>
