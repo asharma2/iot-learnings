@@ -21,7 +21,7 @@ import com.iot.learnings.socket.worker.Worker;
 public class ApplicationConfig {
 
 	@Bean
-	@ConfigurationProperties(prefix = "socket.concox.properties")
+	@ConfigurationProperties(prefix = "socket.properties.concox")
 	public SocketProperties socketConcoxProperties() {
 		return new SocketProperties();
 	}
