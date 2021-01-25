@@ -1,4 +1,4 @@
-package com.iot.learnings.socket;
+package com.iot.learnings;
 
 /**
  * Hello world!

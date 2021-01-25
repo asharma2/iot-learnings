@@ -1,0 +1,16 @@
+server:
+   port: 9090
+socket:
+   concox:
+      properties:
+         ports:
+         - 9200
+         - 9201
+         delay-between-packets: 1000
+         max-connections: 100
+spring:
+   main:
+      allow-bean-definition-overriding: true
+   kafka:
+      producer:
+         bootstrap-servers: 127.0.0.1:9092

@@ -109,5 +109,10 @@
 		<module>gateway-aas</module>
 		<module>socket-aas</module>
 		<module>authentication-aas</module>
+		<module>subscription-aas</module>
+		<module>simulator-aas</module>
+		<module>reporting-aas</module>
+		<module>profile-aas</module>
+		<module>stats-aas</module>
 	</modules>
 </project>

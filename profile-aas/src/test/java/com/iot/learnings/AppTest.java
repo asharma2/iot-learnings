@@ -1,4 +1,4 @@
-package com.iot.learnings.socket;
+package com.iot.learnings;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

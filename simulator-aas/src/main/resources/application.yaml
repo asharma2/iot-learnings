@@ -1,0 +1,16 @@
+server:
+   port: 9091
+simulator:
+   properties:
+      concox:
+         hostname: 127.0.0.1
+         ports:
+         - 9200
+         delay-between-packets: 1000
+         max-connections: 1
+         imei-generation: none ## random|none
+         repeat-path: none ## infinite|none
+         repeat-type: none ## none|cyclic
+spring:
+   main:
+      allow-bean-definition-overriding: true
